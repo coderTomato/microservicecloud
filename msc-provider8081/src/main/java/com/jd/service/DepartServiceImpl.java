@@ -2,10 +2,8 @@ package com.jd.service;
 
 import com.jd.bean.Depart;
 import com.jd.repository.DepartRepository;
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

@@ -2,12 +2,16 @@ server:
   port: 8081
 
 spring:
+  #指定微服务对外暴露的名称
+  application:
+    name: msc-provider
   #配置jpa
   jpa:
     generate-ddl: true #指定是否在spring启动时创建表 默认false
     show-sql: true #指定在控制台是否显示sql语句 默认false
     hibernate:
       ddl-auto: none #指定应用重启后不重新更新表内容
+
 
   #配置
   datasource:
@@ -17,10 +21,12 @@ spring:
     username: root
     password: root
 
+
 eureka:
+  instance:
+    prefer-ip-address: true #注册服务的时候使用服务的ip地址
   client:
     service-url:
       #指定当前client要连接的eureka server
       defaultZone: http://localhost:8761/eureka
-  instance:
-    instance-id: provider-8081
+      #defaultZone: http://10.68.173.135:8761/eureka
