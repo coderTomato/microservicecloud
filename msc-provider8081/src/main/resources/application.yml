@@ -29,4 +29,16 @@ eureka:
     service-url:
       #指定当前client要连接的eureka server
       defaultZone: http://localhost:8761/eureka
-      #defaultZone: http://10.68.173.135:8761/eureka
+
+
+
+management:
+  #开启所有监控终端
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  #开启shutdown监控终端
+  endpoint:
+    shutdown:
+      enabled: true

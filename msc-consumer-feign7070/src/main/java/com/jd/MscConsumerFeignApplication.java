@@ -2,13 +2,13 @@ package com.jd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@EnableEurekaServer
+@EnableFeignClients
 @SpringBootApplication
-public class MscEureka8761Application {
+public class MscConsumerFeignApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MscEureka8761Application.class, args);
+        SpringApplication.run(MscConsumerFeignApplication.class, args);
     }
 }

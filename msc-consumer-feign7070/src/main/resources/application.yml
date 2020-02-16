@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 7070
 spring:
   #指定当前微服务对外暴露的名称
   application:
@@ -13,4 +13,11 @@ eureka:
     service-url:
       #指定当前client要连接的eureka server
       defaultZone: http://localhost:8761/eureka
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000 #指定Feign客户端连接提供者的超时时限
+        readTimeout: 5000 #指定Feign客户端连接上提供者后，向提供者提交请求，从提交时刻开始到接收到响应这段时间的超时时间
 
