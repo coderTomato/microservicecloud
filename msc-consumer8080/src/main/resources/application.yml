@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: msc-consumer
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #注册服务的时候使用服务的ip地址
+  client:
+    service-url:
+      #指定当前client要连接的eureka server
+      defaultZone: http://localhost:8761/eureka
+
