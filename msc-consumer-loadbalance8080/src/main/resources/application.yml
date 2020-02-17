@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  #指定当前微服务对外暴露的名称
+  application:
+    name: msc-consumer
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #注册服务的时候使用服务的ip地址
+  client:
+    service-url:
+      #指定当前client要连接的eureka server
+      defaultZone: http://localhost:8761/eureka
+
+#修改负载均衡策略
+#msc-provider: #要负载均衡的提供者的微服务名称
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
