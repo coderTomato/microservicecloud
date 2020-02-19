@@ -1,6 +1,5 @@
 server:
   port: 8081
-
 spring:
   #指定微服务对外暴露的名称
   application:
@@ -17,7 +16,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:///kkb?useUnicode=true&amp;characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/kkb?useUnicode=true&amp;characterEncoding=utf8
     username: root
     password: root
 
@@ -27,6 +26,7 @@ eureka:
     prefer-ip-address: true #注册服务的时候使用服务的ip地址
   client:
     service-url:
+      #defaultZone: http://10.68.96.71:8761/eureka
       #指定当前client要连接的eureka server
       defaultZone: http://localhost:8761/eureka
 

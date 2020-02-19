@@ -36,6 +36,12 @@ public class DepartServiceImpl implements DepartService {
 
     @Override
     public Depart getDepartById(int id) {
+        int time = id;
+        try {
+            TimeUnit.SECONDS.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if(repository.existsById(id)){
             return repository.getOne(id);
         }

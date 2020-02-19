@@ -25,3 +25,18 @@ feign:
   hystrix:
     enabled: true
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+
+#开启actuator的监控终端
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream

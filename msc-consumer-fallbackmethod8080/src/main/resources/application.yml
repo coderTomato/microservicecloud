@@ -14,3 +14,10 @@ eureka:
       #指定当前client要连接的eureka server
       defaultZone: http://localhost:8761/eureka
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000

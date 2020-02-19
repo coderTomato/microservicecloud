@@ -12,5 +12,7 @@ eureka:
   client:
     service-url:
       #指定当前client要连接的eureka server
+      #defaultZone: http://10.68.96.71:8761/eureka
       defaultZone: http://localhost:8761/eureka
+
 

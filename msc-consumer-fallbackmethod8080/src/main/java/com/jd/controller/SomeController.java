@@ -2,6 +2,7 @@ package com.jd.controller;
 
 import com.jd.bean.Depart;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -40,7 +41,7 @@ public class SomeController {
     //指定该方法要使用服务降级，即当前处理器方法在运行过程中若发生异常
     //无法给客户端正常响应时，就会调用fallbackmethod指定的方法
     @GetMapping("/get/{id}")
-    @HystrixCommand(fallbackMethod = "getHystrixHandler")
+    @HystrixCommand(fallbackMethod = "getHystrixHandler",commandProperties = @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value="4000"))
     public Depart getByIdHandler(@PathVariable("id") int id){
         String url = SERVICE_PROVIDER + "/provider/depart/get/" + id;
         return restTemplate.getForObject(url, Depart.class);

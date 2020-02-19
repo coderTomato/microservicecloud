@@ -18,6 +18,18 @@ public class DepartServiceImpl implements DepartService {
     private int port;
 
     @Override
+    public Depart getDepartById(int id) {
+        if(repository.existsById(id)){
+            Depart depart = repository.getOne(id);
+            depart.setName(depart.getName()+port);
+            return depart;
+        }
+        Depart depart = new Depart();
+        depart.setName("no this depart"+port);
+        return depart;
+    }
+
+    @Override
     public boolean saveDepart(Depart depart) {
         Depart obj = repository.save(depart);
         return obj != null? true : false;
@@ -38,17 +50,7 @@ public class DepartServiceImpl implements DepartService {
         return obj != null? true : false;
     }
 
-    @Override
-    public Depart getDepartById(int id) {
-        if(repository.existsById(id)){
-            Depart depart = repository.getOne(id);
-            depart.setName(depart.getName()+port);
-            return depart;
-        }
-        Depart depart = new Depart();
-        depart.setName("no this depart"+port);
-        return depart;
-    }
+
 
     @Override
     public List<Depart> listAllDeparts() {
