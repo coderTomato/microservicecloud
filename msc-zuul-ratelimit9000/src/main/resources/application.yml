@@ -1,0 +1,39 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: msc-zuul-depart
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      #defaultZone: http://10.68.96.71:8761/eureka
+      #指定当前client要连接的eureka server
+      defaultZone: http://localhost:8761/eureka
+
+zuul:
+  #指定统一的前缀
+  prefix: /jd
+  routes:
+    #指定微服务路由规则
+    msc-consumer-8080: /msc8080/**
+    msc-consumer-8090: /msc8090/**
+  #对限流策略进行配置
+  ratelimit:
+    enabled: true #开启限流
+    #在一个单位时间之内通过该zuul的用户数量、ip数量及url数量，都不能超过3个
+    default-policy: #设置限流策略
+      refresh-interval: 3 #限流单位时间窗口大小 单位秒
+      quota: 1 #指定限流的时间窗口数量
+      limit: 3 #指定的单位时间窗口内启动限流的限定值
+      type: user,origin,url # 指定限流查验的类型
+
+
+
+
+
+
+
