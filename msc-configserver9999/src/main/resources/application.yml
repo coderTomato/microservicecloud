@@ -1,0 +1,11 @@
+server:
+  port: 9999
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/coderTomato/msc-config-center.git
+          timeout: 5
+          default-label: master
