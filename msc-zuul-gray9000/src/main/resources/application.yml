@@ -1,0 +1,28 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: msc-zuul-depart
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      #defaultZone: http://10.68.96.71:8761/eureka
+      #指定当前client要连接的eureka server
+      defaultZone: http://localhost:8761/eureka
+
+zuul:
+  routes:
+    #指定微服务路由规则
+    msc-consumer: /msc-lb/**
+
+
+
+
+
+
+
+
