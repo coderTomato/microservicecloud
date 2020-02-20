@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  #指定当前微服务对外暴露的名称
+  application:
+    name: msc-consumer
+  #指定zipkin服务器地址
+  zipkin:
+    base-url: http://localhost:9411/
+
+  #设置采样比例为1.0 即全部都需要，默认为0.1
+  sleuth:
+    sampler:
+      probability: 1.0
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #注册服务的时候使用服务的ip地址
+  client:
+    service-url:
+      #指定当前client要连接的eureka server
+      #defaultZone: http://10.68.96.71:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+
+

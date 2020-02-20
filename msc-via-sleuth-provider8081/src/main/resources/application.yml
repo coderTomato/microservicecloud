@@ -1,0 +1,56 @@
+server:
+  port: 8081
+
+spring:
+  #指定微服务对外暴露的名称
+  application:
+    name: msc-provider
+
+  #指定zipkin服务器地址
+  zipkin:
+    base-url: http://localhost:9411/
+
+  #设置采样比例为1.0 即全部都需要，默认为0.1
+  sleuth:
+    sampler:
+      probability: 1.0
+
+
+  #配置jpa
+  jpa:
+    generate-ddl: true #指定是否在spring启动时创建表 默认false
+    show-sql: true #指定在控制台是否显示sql语句 默认false
+    hibernate:
+      ddl-auto: none #指定应用重启后不重新更新表内容
+
+
+  #配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kkb?useUnicode=true&amp;characterEncoding=utf8
+    username: root
+    password: root
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #注册服务的时候使用服务的ip地址
+  client:
+    service-url:
+      #defaultZone: http://10.68.96.71:8761/eureka
+      #指定当前client要连接的eureka server
+      defaultZone: http://localhost:8761/eureka
+
+
+
+management:
+  #开启所有监控终端
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  #开启shutdown监控终端
+  endpoint:
+    shutdown:
+      enabled: true
