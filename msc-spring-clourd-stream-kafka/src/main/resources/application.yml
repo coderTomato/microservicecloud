@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  #指定当前微服务对外暴露的名称
+  application:
+    name: msc-consumer-kafka
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          #指定要连接的kafka集群
+          brokers: node01:9092,node02:9092,node03:9092
+          #指定是否自动创建主题
+          auto-create-topics: true
+      bindings:
+        #指定要输出的消息主题及类型
+        output:
+          destination: names
+          content-type: text/plain
+
+eureka:
+  instance:
+    prefer-ip-address: true #注册服务的时候使用服务的ip地址
+  client:
+    service-url:
+      #指定当前client要连接的eureka server
+      #defaultZone: http://10.68.96.71:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+
+
