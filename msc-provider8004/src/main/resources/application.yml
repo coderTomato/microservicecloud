@@ -1,0 +1,10 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: msc-provider
+
+  cloud:
+    zookeeper:
+      connect-string: 192.168.56.102:2181
